@@ -31,11 +31,19 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
+# DSH 的家目录。优先级：$env:DSH_HOME > $env:USERPROFILE\.dsh
+# ⚠️ 别写死 $env:USERPROFILE\.dsh —— DSH 支持自定义家目录（实测有用户用 D:\25602\dsh\dsh-desktop-home），
+#    写死的话这类用户会被装到错的地方，或者诊断脚本查错目录。
+function Get-DshHome {
+    if ($env:DSH_HOME -and (Test-Path -LiteralPath $env:DSH_HOME)) { return $env:DSH_HOME }
+    return (Join-Path $env:USERPROFILE '.dsh')
+}
+
 function Say($m) { Write-Host $m }
 function Fail($m) { Write-Host ("✗ " + $m) -ForegroundColor Red; exit 1 }
 function Ok($m)   { Write-Host ("✓ " + $m) -ForegroundColor Green }
 
-if (-not $ProfileRoot) { $ProfileRoot = Join-Path $env:USERPROFILE '.dsh\profiles\web' }
+if (-not $ProfileRoot) { $ProfileRoot = Join-Path (Get-DshHome) 'profiles\web' }
 if (-not (Test-Path -LiteralPath $ProfileRoot)) { Fail ("找不到 profile：" + $ProfileRoot) }
 $ProfileRoot = (Resolve-Path -LiteralPath $ProfileRoot).ProviderPath
 
@@ -89,7 +97,7 @@ if ($changed) {
 }
 
 # 数据目录
-$dataDir = Join-Path $env:USERPROFILE '.dsh\pet'
+$dataDir = Join-Path (Get-DshHome) 'pet'
 if ($PurgeData) {
     if (Test-Path -LiteralPath $dataDir) {
         Remove-Item -LiteralPath $dataDir -Recurse -Force
