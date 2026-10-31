@@ -1,6 +1,6 @@
 {
   "name": "dsh-pet",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "一键截图问 DSH：一只浮在所有窗口之上的鲸鱼球，把当前屏幕速递给你指定的 DSH 会话，答案回写到球上的气泡里 —— 让 DSH 看见并指导你操作它自己够不到的地方。Windows 专用。",
   "keywords": [
     "dsh",
@@ -24,10 +24,6 @@
   "author": "HeiBai-king",
   "type": "module",
   "main": "lib/index.js",
-  "exports": {
-    ".": "./lib/index.js",
-    "./client": "./assets/client.js"
-  },
   "files": [
     "lib",
     "assets",
@@ -48,10 +44,6 @@
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
-    },
-    "client": {
-      "platform": "web",
-      "immediately": true
     }
   },
   "license": "MIT"

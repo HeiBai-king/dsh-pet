@@ -294,7 +294,7 @@ Select-String -Path "$env:USERPROFILE\.dsh\pet\pet-host.log" -Pattern "自检：
 | `webserver/index-inject` 表 | **胶囊不出现**（但球会被自动拉起来，功能不受影响） |
 | `webServer.tapIndex` | web 形态不注入 |
 | 服务名 `webServer` / `agents` / `sessionController` / `sessionQuery` | 插件起不来 / 选不了会话 |
-| 客户端槽位名 `shell.overlay` | 胶囊不显示（会自动退回手写注入，仍能显示） |
+| 胶囊 5 秒后才出现 | 正常 —— 注入脚本会先等 5 秒看有没有客户端接管，然后自己挂上 |
 | `agent.followup` + `createUserMessage` | 点了没反应，日志写"拿不到可投递的 agent" |
 | 会话缓存格式 `session_projcache` | 选择框标题变成"未命名" |
 
