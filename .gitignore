@@ -1,0 +1,30 @@
+# 依赖
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+
+# 运行时产物（挂在 $DSH_HOME\pet 下，正常不会出现在这里；防手滑）
+*.log
+pet-state.json
+pet-ball.pid
+pet-brain.pid
+stop.flag
+ask.request
+window.json
+reported.json
+
+# 本地备份
+*.bak-*
+*.bak
+*.removed
+
+# 开发时的探针残留（tools/ 下以 _ 开头的都是临时文件）
+tools/_*
+*_sample.log
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

@@ -1,0 +1,58 @@
+{
+  "name": "dsh-pet",
+  "version": "0.2.0",
+  "description": "一键截图问 DSH：一只浮在所有窗口之上的鲸鱼球，把当前屏幕速递给你指定的 DSH 会话，答案回写到球上的气泡里 —— 让 DSH 看见并指导你操作它自己够不到的地方。Windows 专用。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "desktop-pet",
+    "screenshot",
+    "ask",
+    "overlay",
+    "widget"
+  ],
+  "homepage": "https://github.com/HeiBai-king/dsh-pet",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeiBai-king/dsh-pet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HeiBai-king/dsh-pet/issues"
+  },
+  "author": "HeiBai-king",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./assets/client.js"
+  },
+  "files": [
+    "lib",
+    "assets",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "tools/install.ps1",
+    "tools/uninstall.ps1",
+    "tools/selfcheck.mjs",
+    "tools/write-config.mjs"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "os": [
+    "win32"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "license": "MIT"
+}
